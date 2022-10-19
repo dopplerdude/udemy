@@ -1,0 +1,10 @@
+14:03:01 **** Incremental Build of configuration Debug for project cpp-project ****
+make -j12 all 
+arm-none-eabi-size   cpp-project.elf 
+   text	   data	    bss	    dec	    hex	filename
+    660	      8	   1568	   2236	    8bc	cpp-project.elf
+Finished building: default.size.stdout
+ 
+
+14:03:01 Build Finished. 0 errors, 0 warnings. (took 760ms)
+

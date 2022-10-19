@@ -1,0 +1,6 @@
+*********************************
+ RTOS configuration
+*********************************
+- Time base source selection - 
+ RTOS and HAL layer need to have separate time base source.
+ 

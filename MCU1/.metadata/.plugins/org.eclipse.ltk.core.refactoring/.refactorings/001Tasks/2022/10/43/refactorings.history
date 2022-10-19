@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;001Tasks/ThirdParty/queue/queue.c&apos; to &apos;my-queue.c&apos;" description="Rename resource &apos;queue.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="ThirdParty/queue/queue.c" name="my-queue.c" stamp="1666098587439" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;001Tasks/ThirdParty/queue/queue.h&apos; to &apos;my-queue.h&apos;" description="Rename resource &apos;queue.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="ThirdParty/queue/queue.h" name="my-queue.h" stamp="1666098595896" updateReferences="true"/>
+</session>

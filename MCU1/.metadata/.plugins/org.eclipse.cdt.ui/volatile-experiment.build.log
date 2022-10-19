@@ -1,0 +1,17 @@
+15:40:06 **** Incremental Build of configuration Debug for project volatile-experiment ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -DSTM32F411E_DISCO -c -I../Inc -O3 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "volatile-experiment.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\E0657210\Data\learning\udemy\MCU1\volatile-experiment\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="volatile-experiment.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: volatile-experiment.elf
+ 
+arm-none-eabi-size   volatile-experiment.elf 
+arm-none-eabi-objdump -h -S  volatile-experiment.elf  > "volatile-experiment.list"
+   text	   data	    bss	    dec	    hex	filename
+    668	      8	   1568	   2244	    8c4	volatile-experiment.elf
+Finished building: default.size.stdout
+ 
+Finished building: volatile-experiment.list
+ 
+
+15:40:08 Build Finished. 0 errors, 0 warnings. (took 2s.320ms)
+

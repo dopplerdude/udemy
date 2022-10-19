@@ -1,0 +1,25 @@
+23:34:11 **** Incremental Build of configuration Debug for project 001Tasks ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I"C:/Users/E0657210/Data/Projects/ST/workspace/RTOS_workspace/001Tasks/ThirdParty/queue" -I"C:/Users/E0657210/Data/Projects/ST/workspace/RTOS_workspace/001Tasks/ThirdParty/FreeRTOS" -I"C:/Users/E0657210/Data/Projects/ST/workspace/RTOS_workspace/001Tasks/ThirdParty/FreeRTOS/include" -I"C:/Users/E0657210/Data/Projects/ST/workspace/RTOS_workspace/001Tasks/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'task2_publisher':
+../Core/Src/main.c:427:2: warning: statement with no effect [-Wunused-value]
+  427 |  (void*)parameters;
+      |  ^
+../Core/Src/main.c: In function 'task3_consumer':
+../Core/Src/main.c:456:2: warning: statement with no effect [-Wunused-value]
+  456 |  (void*)parameters;
+      |  ^
+arm-none-eabi-gcc -o "001Tasks.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\E0657210\Data\Projects\ST\workspace\RTOS_workspace\001Tasks\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="001Tasks.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 001Tasks.elf
+ 
+arm-none-eabi-size   001Tasks.elf 
+arm-none-eabi-objdump -h -S  001Tasks.elf  > "001Tasks.list"
+   text	   data	    bss	    dec	    hex	filename
+  29680	    132	  78992	 108804	  1a904	001Tasks.elf
+Finished building: default.size.stdout
+ 
+Finished building: 001Tasks.list
+ 
+
+23:34:14 Build Finished. 0 errors, 2 warnings. (took 3s.213ms)
+
