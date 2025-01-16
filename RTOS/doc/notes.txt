@@ -1,0 +1,74 @@
+*********************************
+ RTOS configuration
+*********************************
+- Time base source selection - 
+ RTOS and HAL layer need to have separate time base source.
+ 
+
+Real-time deals with guarantees, not with raw speed!
+
+In RT systems, system failure said to have occured if timing constraints are not met;  	
+
+- RTA are not fast executing applications.
+- RTAs are time deterministic applications, that means their response time to events is almost constant.
+- Based on acceptable deviation in response time systems can be categorized as Soft / Hard RTA.
+- Hard real time functions must complete within a given time limit. Failure to do so will result in absolute system failure.
+
+Hard RTA : Airbag deployment in automotive, Missiles and guidance system, Anti-Lock Braking system, 
+			Robotics, ATMs, 
+Soft RTA : Keyboard, VoIP, Stock Market, Audio/Video streaming, 
+
+
+===========================================
+How big should be the stack for a task?
+--------------------------------
+https://www.freertos.org/Why-FreeRTOS/FAQs/Memory-usage-boot-times-context#how-big-should-the-stack-be
+
+===========================================
+Time base selection:
+----------------------------
+- FreeRTOS: uses Cortex Mx processor's internal SysTick timer for RTOS ticking.
+- This is internal peripheral of the processor.
+	: Task scheduling
+- HAL: 
+	- Used to communicate with various peripherals such as UART, ADC, Timers, USB etc.	
+	- It also by default uses systick as its timer base
+
+If both RTOS and HAL layer uses same time base source then there will be conflict.
+
+
+
+=======================================================
+WEBINAR: RTOS Porting considerations: Webinar
+--------------------------
+https://resources.embeddedcomputing.com/Embedded-Computing-Design/Seamless-RTOS-transition?utm_bmcr_source=wr
+
+
+
+ ==========================================================
+ WEBINAR: RTOS Debugging challenges: Stack usage analysis; Stack overflow
+ -----------------------------------------------------------
+ https://register.gotowebinar.com/recording/recordingView?webinarKey=3262967196941903888&registrantEmail=sharad%40gmail.com&recurrenceKey=6084760435535996688
+ 
+ 
+CRITICAL SECTION:
+--------------------
+If a global variable is shared between ISR and a task then it is considered a critical section.
+And access/modification to it are guarded by Disabling interrupts:
+
+
+
+FTDI RS232 adapter:
+------------------------
+https://askubuntu.com/questions/910152/ubuntu-16-04-using-a-serial-terminal-with-a-ftdi-chip-usb-virtual-comport
+
+
+Hardware Timers vs Software Timers:
+----------------------------------
+Hardware Timers: 
+Timers provided by HAL layer. These are actual timer peripherals of MCU.
+No RTOS APIS. Provide your own functions to manage these.
+Software Timers:
+Handled by RTOS kernel.
+RTOS provides timer management based on RTOS tick(systick).
+RTOS APIS are available to manage it.

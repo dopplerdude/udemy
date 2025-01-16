@@ -1,0 +1,65 @@
+/*
+ * task_handler.c
+ *
+ *  Created on: Dec 1, 2024
+ *      Author: sharad
+ */
+#include "main.h"
+
+void menu_task(void* parameters)
+{
+	BaseType_t  status;
+	while(1)
+	{
+
+	}
+}
+
+
+void cmd_task(void* parameters)
+{
+	BaseType_t  status;
+
+	while(1)
+	{
+		/* Implement notify wait */
+
+		/* process the user data(command) stored in input data queue */
+
+		/* Notify the command to relevant task */
+	}
+}
+
+
+void print_task(void* parameters)
+{
+	BaseType_t  status;
+
+	while(1)
+	{
+
+	}
+
+}
+
+void led_task(void* parameters)
+{
+	BaseType_t  status;
+
+	while(1)
+	{
+
+	}
+
+}
+
+void rtc_task(void* parameters)
+{
+	BaseType_t  status;
+
+	while(1)
+	{
+
+	}
+
+}

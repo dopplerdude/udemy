@@ -1,0 +1,18 @@
+/*
+ * led_effects.c
+ *
+ *  Created on: Dec 1, 2024
+ *      Author: sharad
+ */
+#include "main.h"
+
+void led_effect_stop(void)
+{
+
+}
+
+void led_effect(int n)
+{
+
+}
+

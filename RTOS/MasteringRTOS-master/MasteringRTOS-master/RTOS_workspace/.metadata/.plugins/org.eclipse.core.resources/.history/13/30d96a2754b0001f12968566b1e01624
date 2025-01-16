@@ -1,0 +1,19 @@
+/*
+ * led_effects.c
+ *
+ *  Created on: Dec 1, 2024
+ *      Author: sharad
+ */
+#include "main.h"
+
+void led_effect_stop(void)
+{
+
+}
+
+void led_effect(int n)
+{
+	led_effect_stop();
+	xTimerStart(handle_led_timer[n-1], portMAX_DELAY);
+}
+

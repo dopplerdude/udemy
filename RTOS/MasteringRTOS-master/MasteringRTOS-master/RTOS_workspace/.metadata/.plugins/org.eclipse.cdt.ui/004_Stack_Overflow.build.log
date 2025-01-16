@@ -1,0 +1,10 @@
+01:18:51 **** Incremental Build of configuration Debug for project 004_Stack_Overflow ****
+make -j16 all 
+arm-none-eabi-size  004_Stack_Overflow.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26876	     20	  84612	 111508	  1b394	004_Stack_Overflow.elf
+Finished building: default.size.stdout
+ 
+
+01:18:52 Build Finished. 0 errors, 0 warnings. (took 841ms)
+

@@ -1,0 +1,187 @@
+/*
+ * task_handler.c
+ *
+ *  Created on: Dec 1, 2024
+ *      Author: sharad
+ */
+#include "main.h"
+
+int extract_command(command_t* cmd);
+void process_command(command_t* cmd);
+
+const char* msg_inv = "!!!! Invalid Choice !!!\n";
+
+void menu_task(void* parameters)
+{
+	uint32_t cmd_addr;
+	command_t* cmd;
+	int option;
+	const char* msg_menu = 	"==========================\n"
+							"           Menu           \n"
+							"LED effect     --------> 0\n"
+							"Date and Time  --------> 1\n"
+							"Exit           --------> 2\n"
+							"Enter your choice here :  ";
+
+	while(1)
+	{
+		xQueueSend(q_print, &msg_menu, portMAX_DELAY);
+		xTaskNotifyWait(0, 0, &cmd_addr, portMAXDELAY);
+
+		cmd = (command_t*)cmd_addr;
+
+		if(1 == cmd->len)
+		{
+			option = cmd->payload[0] - 48;	// ascii to number
+			switch(option)
+			{
+				case 0:
+					cur_state = sLedEffect;
+					xTaskNotify(handle_led_task, 0, eNoAction);
+					break;
+
+				case 1:
+					cur_state = sRtcMenu;
+					xTaskNotify(handle_rtc_task, 0, eNoAction);
+					break;
+
+				case 2:	// Implement Exit
+					break;
+
+				default:
+					xQueueSend(q_print, &msg_inv, portMAXDELAY);
+					break;
+			}
+		}
+		else
+		{
+			// invalid entry
+			xQueueSend(q_print, &msg_inv, portMAX_DELAY);
+		}
+
+	}
+}
+
+
+void cmd_task(void* parameters)
+{
+	BaseType_t  ret;
+	command_t cmd;
+	while(1)
+	{
+		/* Implement notify wait */
+		ret = xTaskNotifyWait(0, 0, NULL, portMAX_DELAY);
+		if( pdTRUE == ret)
+		{
+			/* process the user data(command) stored in input data queue */
+			process_command(&cmd);
+		}
+
+		/* Notify the command to relevant task */
+	}
+}
+
+
+void print_task(void* parameters)
+{
+
+	while(1)
+	{
+
+	}
+
+}
+
+void led_task(void* parameters)
+{
+
+
+	while(1)
+	{
+
+	}
+
+}
+
+void rtc_task(void* parameters)
+{
+
+	while(1)
+	{
+
+	}
+
+}
+
+
+void process_command(command_t* cmd)
+{
+	extract_command(cmd);
+
+	switch(cur_state)
+	{
+		case sMainMenu:
+			/* Notify menu task with the command */
+			xTaskNotify(handle_menu_task, (uint32_t)cmd, eSetValueWithOverwrite);
+			break;
+
+		case sLedEffect:
+			/* Notify LED task with the command */
+			xTaskNotify(handle_led_task, (uint32_t)cmd, eSetValueWithOverwrite);
+			break;
+
+		case sRtcMenu:
+		case sRtcTimeConfig:
+		case sRtcDateConfig:
+		case sRtcReport:
+			/* Notify RTC task with the command */
+			xTaskNotify(handle_rtc_task, (uint32_t)cmd, eSetValueWithOverwrite);
+			break;
+
+		default:
+			break;
+	}
+}
+
+int extract_command(command_t* cmd)
+{
+	uint8_t item;
+	BaseType_t  status;
+
+	status = uxQueueMessagesWaiting(q_data);
+	if(!status)
+	{
+		return(-1);
+	}
+
+	uint8_t i = 0;
+	do
+	{
+		status = xQueueReceive(q_data, &item, 0);
+		if(pdTRUE == status)
+		{
+			cmd->payload[i++] = item;
+		}
+
+	}while('\n' != item);
+
+	cmd->payload[i-1] = '\0';
+	cmd->len = i - 1;		// Save length of command excluding null character
+
+	return(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

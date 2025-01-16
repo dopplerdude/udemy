@@ -1,0 +1,10 @@
+13:39:30 **** Incremental Build of configuration Debug for project 005_Task_Notify_Using_Btn ****
+make -j16 all 
+arm-none-eabi-size  005_Task_Notify_Using_Btn.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28552	     20	  84636	 113208	  1ba38	005_Task_Notify_Using_Btn.elf
+Finished building: default.size.stdout
+ 
+
+13:39:30 Build Finished. 0 errors, 0 warnings. (took 315ms)
+

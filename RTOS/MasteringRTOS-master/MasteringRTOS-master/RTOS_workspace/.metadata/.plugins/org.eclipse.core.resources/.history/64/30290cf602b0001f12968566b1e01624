@@ -1,0 +1,79 @@
+/*
+ * task_handler.c
+ *
+ *  Created on: Dec 1, 2024
+ *      Author: sharad
+ */
+#include "main.h"
+
+void menu_task(void* parameters)
+{
+	BaseType_t  status;
+	while(1)
+	{
+
+	}
+}
+
+typedef struct
+{
+	uint8_t payload[10];	// store data bytes of the command
+	uint8_t len;			// command length
+}command_t;
+
+/* Application states */
+typedef enum
+{
+	sMainMenu = 0,
+	sLedEffect,
+	sRtcMenu,
+	sRtcTimeConfig,
+	sRtcDateConfig,
+	sRtcReport,
+}state_t;
+
+void cmd_task(void* parameters)
+{
+	while(1)
+	{
+		/* Implement notify wait */
+
+		/* process the user data(command) stored in input data queue */
+
+		/* Notify the command to relevant task */
+	}
+}
+
+
+void print_task(void* parameters)
+{
+	BaseType_t  status;
+
+	while(1)
+	{
+
+	}
+
+}
+
+void led_task(void* parameters)
+{
+	BaseType_t  status;
+
+	while(1)
+	{
+
+	}
+
+}
+
+void rtc_task(void* parameters)
+{
+	BaseType_t  status;
+
+	while(1)
+	{
+
+	}
+
+}
